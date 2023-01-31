@@ -1,8 +1,8 @@
 package assignment1;
 
 // To make the tester work, you might need to setUp some import libraries. To do so:
-// 1: Hover over the red text saying junit (or other libraries that are red)
-// 2: click add to classpath or import statement (depends on the IDE)
+    // 1: Hover over the red text saying junit (or other libraries that are red)
+    // 2: click add to classpath or import statement (depends on the IDE)
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import java.lang.reflect.Field;
@@ -34,7 +34,7 @@ class AirportTest { // 2 points
 class RoomTest {    // 6 points
 
     @Test
-    @Tag("score:1") @DisplayName("Room Constructor Test1")
+    @Tag("score:2") @DisplayName("Room Constructor Test1")
     void roomConstructor_Test1() {
         Room room = new Room("double");
         assertEquals("double", room.getType(),
@@ -93,17 +93,6 @@ class RoomTest {    // 6 points
         Room[] rooms = {new Room("double"), new Room("king"), new Room("queen")};
         assertFalse(Room.makeRoomAvailable(rooms, "king"),
                 "Room: makeRoomAvailable() did not return the correct value"  );
-    }
-
-    @Test
-    @Tag("score:1") @DisplayName("Room changeAvailability Test1")
-    void changeAvailability_Test1() {
-        Room room = new Room("double");
-        Room[] rooms = {room};
-        room.changeAvailability();
-        assertTrue(Room.makeRoomAvailable(rooms, "double"),
-                "Room: changeAvailability() did not change the availability of the room");
-
     }
 }
 
@@ -407,6 +396,17 @@ class BasketTest {      // 7 points
 
         assertEquals(2, number,
                 "Basket: add() returns the wrong number of reservations now in the basket.");
+    }
+
+    @Test
+    @Tag("score:1") @DisplayName("Basket add() Test2")
+    void addTest2() {
+        Basket basket = new Basket();
+        int number = 0;
+        for(int i = 0; i < 30; i++){
+            number = basket.add(new HotelReservation("Marty", new Hotel("Gatewater", new Room[]{new Room("queen")}), "queen", 4));
+        }
+        assertEquals(30, number, "Basket: add() returns the wrong number of reservations now in the basket when adding many items.");
     }
 
     @Test
